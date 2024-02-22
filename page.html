@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="hello.js" defer></script>
+    <title>Minesweeper</title>
+    <link rel="icon" type="image/x-icon" href="img/mine.ico">
+    <style>
+        body {
+            background-image: url("img/bg.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        h1{
+            font-family: Stencil,fantasy;
+            font-size: 550%;
+            margin-top: 0;
+            margin-bottom: 0;
+            color: #3d3c3c;
+            text-align: center;
+            text-shadow:
+                    -3px -3px 0 #ff6800,
+                    3px -3px 0 #ff6800,
+                    -3px 3px 0 #ff6800,
+                    3px 3px 0 #ff6800;
+        }
+        h2{
+            font-family: Stencil,fantasy;
+            font-size: 385%;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-shadow:
+                    -1px -1px 0 #000000,
+                    1px -1px 0 #000000,
+                    -1px 1px 0 #000000,
+                    1px 1px 0 #000000;
+            visibility: hidden;
+        }
+        input{
+            margin: 0;
+            background-color: white;
+            border-style: solid;
+            background-image: url("img/square.png");
+        }
+        .difficultySelectionDiv{
+            position: absolute;
+            width: 230px;
+            background-color: white;
+            border-style: solid;
+            transform: translate(0px,-100px);
+        }
+        .diff{
+            height: 15px;
+            width: 15px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+        label{
+            vertical-align: top;
+        }
+        .diffLabel{
+            font-size: 150%;
+            margin-bottom: 15px;
+            margin-left: 10px;
+        }
+        .customDiv{
+            position: absolute;
+            border-style: hidden;
+            width: 120px;
+            height: 100px;
+            margin-left: 110px;
+            margin-top: 45px;
+            visibility: hidden;
+            transform: translate(0px,0px);
+        }
+        .customInputText{
+            height: 15px;
+            width: 40px;
+            margin-bottom: 10px;
+        }
+        .infoDiv{
+            font-family: Stencil,fantasy;
+            font-size: x-large;
+            width: 300px;
+            height: 140px;
+            position: absolute;
+            top: 20px;
+            left: 1080px;
+        }
+        .infoLabel{
+            text-shadow:
+                    -0.5px -0.5px 0 #ff6800,
+                    0.5px -0.5px 0 #ff6800,
+                    -0.5px 0.5px 0 #ff6800,
+                    0.5px 0.5px 0 #ff6800;
+        }
+    </style>
+</head>
+<body>
+    <h1>Minesweeper</h1>
+    <form>
+    <div translate="yes" class="difficultySelectionDiv">
+        <div class="customDiv" id="customInputDiv" translate="yes">
+            <label>
+                Height:<input type="number" class="customInputText" id="height" style="margin-left: 5px" min="1" max="999">
+            </label>
+            <br>
+            <label>
+                Width:<input type="number" class="customInputText" id="width" style="margin-left: 9px" min="1" max="999">
+            </label>
+            <br>
+            <label>
+                Mines:<input type="number" class="customInputText" id="numOfMines" style="margin-left: 9px" min="0" max="999">
+            </label>
+        </div>
+        <label class="diffLabel">Start new game:</label><br>
+        <input type="radio" id="easy" name="difficulty" class="diff" value="easy">
+        <label for="easy">Easy</label><br>
+        <input type="radio" id="medium" name="difficulty" class="diff" value="medium">
+        <label for="medium">Medium</label><br>
+        <input type="radio" id="hard" name="difficulty" class="diff" value="hard">
+        <label for="hard">Hard</label><br>
+        <input type="radio" id="custom" name="difficulty" class="diff" value="custom">
+        <label for="custom">Custom...</label><br>
+        <input type="submit" id="newGameButton" style="margin-left: 8px; margin-bottom: 10px" value="New game">
+    </div>
+    </form>
+    <div class="infoDiv">
+        <label class="infoLabel">Difficulty: </label>  <label id="diffLabel"></label>  <br><br>
+        <label class="infoLabel">Mines remaining: </label>  <label  id="minesLabel" class="infoLabel" style="color: darkred"></label>  <br><br>
+        <label id="hour" class="infoLabel">00</label>:<label id="minute" class="infoLabel">00</label>:<label id="second" class="infoLabel">00</label>
+    </div>
+    <center id="cntr">
+        <h2 id="gameOverText" style="width: 400px; text-align: center; margin: 0px 20px 0px 20px;"> null </h2>
+    </center>
+</body>
+</html>
